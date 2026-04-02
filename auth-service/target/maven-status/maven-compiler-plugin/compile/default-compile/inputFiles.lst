@@ -1,3 +1,12 @@
 C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\AuthServiceApplication.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\config\DataInitializer.java
 C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\config\SecurityConfig.java
 C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\controller\AuthHealthController.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\model\Employee.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\model\Role.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\model\RoleName.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\repository\EmployeeRepository.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\repository\RoleRepository.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\security\AuthUserDetailsService.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\security\JwtAuthenticationFilter.java
+C:\Users\User\OneDrive\Documents\New project 4\auth-service\src\main\java\com\nexushr\auth\security\JwtService.java

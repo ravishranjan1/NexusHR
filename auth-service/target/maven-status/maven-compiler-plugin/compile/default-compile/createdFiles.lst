@@ -1,3 +1,12 @@
+com\nexushr\auth\security\JwtService.class
+com\nexushr\auth\repository\RoleRepository.class
 com\nexushr\auth\AuthServiceApplication.class
 com\nexushr\auth\config\SecurityConfig.class
 com\nexushr\auth\controller\AuthHealthController.class
+com\nexushr\auth\security\JwtAuthenticationFilter.class
+com\nexushr\auth\repository\EmployeeRepository.class
+com\nexushr\auth\model\Role.class
+com\nexushr\auth\model\RoleName.class
+com\nexushr\auth\model\Employee.class
+com\nexushr\auth\config\DataInitializer.class
+com\nexushr\auth\security\AuthUserDetailsService.class
