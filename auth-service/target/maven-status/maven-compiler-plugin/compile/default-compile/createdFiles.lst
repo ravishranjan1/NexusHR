@@ -1,0 +1,3 @@
+com\nexushr\auth\AuthServiceApplication.class
+com\nexushr\auth\config\SecurityConfig.class
+com\nexushr\auth\controller\AuthHealthController.class
