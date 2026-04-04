@@ -1,6 +1,5 @@
 package com.nexushr.auth.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,7 +42,7 @@ public class Employee {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "employee_roles",
             joinColumns = @JoinColumn(name = "employee_id"),
