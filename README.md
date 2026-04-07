@@ -116,4 +116,27 @@ Attendance endpoints added:
 
 Day 5 prepares the project for Day 6 leave management and approval workflow.
 
+## Day 6 Setup
+
+Day 6 focused on leave management and approval workflow.
+
+Implemented in `employee-service`:
+
+- Flyway migration for the `leave_requests` table
+- `LeaveRequest` entity with leave type, date range, status, and review metadata
+- `LeaveType` and `LeaveStatus` enums
+- Repository support for employee leave history and pending requests
+- Leave management service for submit, approve, and reject actions
+- Leave management REST controller for request and approval APIs
+
+Leave management endpoints added:
+
+- `POST /api/leaves`
+- `GET /api/leaves/employee/{employeeId}`
+- `GET /api/leaves/pending`
+- `POST /api/leaves/{leaveRequestId}/approve`
+- `POST /api/leaves/{leaveRequestId}/reject`
+
+Day 6 prepares the project for Day 7 backend checkpoint and testing.
+
 Git was intentionally not used as requested.
