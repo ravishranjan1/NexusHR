@@ -63,4 +63,57 @@ Role-based access endpoints added:
 
 Day 3 prepares the project for Day 4 database schema and employee CRUD work.
 
+## Day 4 Setup
+
+Day 4 focused on creating the employee database schema and building employee CRUD operations.
+
+Implemented in `employee-service`:
+
+- PostgreSQL datasource configuration using `application.properties`
+- Flyway migration setup for schema versioning
+- Initial schema for `departments`, `roles`, `employees`, and `employee_roles`
+- Seed data for default departments and employee roles
+- JPA entities for `Department`, `Role`, and `Employee`
+- Repositories for employee, department, and role access
+- Employee create, read, update, and delete service logic
+- REST endpoints for employee CRUD operations
+- Exception handler for validation and request errors
+
+Employee CRUD endpoints added:
+
+- `GET /api/employees`
+- `GET /api/employees/{id}`
+- `POST /api/employees`
+- `PUT /api/employees/{id}`
+- `DELETE /api/employees/{id}`
+
+Day 4 prepares the project for Day 5 Redis integration and attendance module foundation.
+
+## Day 5 Setup
+
+Day 5 focused on Redis-based session caching and the attendance tracking module foundation.
+
+Implemented in `auth-service`:
+
+- Redis configuration using `application.properties`
+- Redis template configuration for session objects
+- Session cache service for storing login session details by refresh token
+- Session cache integration with login, refresh, and logout flows
+
+Implemented in `employee-service`:
+
+- Flyway migration for `attendance_records`
+- Attendance JPA entity and status enum
+- Attendance repository for employee attendance lookups
+- Attendance service for check-in, check-out, and history retrieval
+- Attendance REST controller for starter attendance APIs
+
+Attendance endpoints added:
+
+- `POST /api/attendance/check-in`
+- `POST /api/attendance/{attendanceId}/check-out`
+- `GET /api/attendance/employee/{employeeId}`
+
+Day 5 prepares the project for Day 6 leave management and approval workflow.
+
 Git was intentionally not used as requested.

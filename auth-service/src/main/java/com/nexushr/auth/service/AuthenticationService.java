@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -32,6 +33,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final RefreshTokenService refreshTokenService;
+    private final SessionCacheService sessionCacheService;
     private final long accessTokenExpiration;
 
     public AuthenticationService(EmployeeRepository employeeRepository,
@@ -40,6 +42,7 @@ public class AuthenticationService {
                                  AuthenticationManager authenticationManager,
                                  JwtService jwtService,
                                  RefreshTokenService refreshTokenService,
+                                 SessionCacheService sessionCacheService,
                                  @Value("${security.jwt.access-token-expiration}") long accessTokenExpiration) {
         this.employeeRepository = employeeRepository;
         this.roleRepository = roleRepository;
@@ -47,6 +50,7 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
         this.refreshTokenService = refreshTokenService;
+        this.sessionCacheService = sessionCacheService;
         this.accessTokenExpiration = accessTokenExpiration;
     }
 
@@ -95,6 +99,7 @@ public class AuthenticationService {
 
     public void logout(String refreshToken) {
         refreshTokenService.revoke(refreshToken);
+        sessionCacheService.evictSession(refreshToken);
     }
 
     private AuthResponse buildAuthResponse(Employee employee) {
@@ -108,13 +113,15 @@ public class AuthenticationService {
 
         String accessToken = jwtService.generateAccessToken(userDetails);
         RefreshToken refreshToken = refreshTokenService.create(employee);
+        List<String> roles = employee.getRoles().stream().map(Role::getName).map(Enum::name).toList();
+        sessionCacheService.cacheSession(refreshToken.getToken(), employee.getEmail(), roles, accessToken);
 
         return new AuthResponse(
                 accessToken,
                 refreshToken.getToken(),
                 accessTokenExpiration / 1000,
                 employee.getEmail(),
-                employee.getRoles().stream().map(Role::getName).map(Enum::name).toList()
+                roles
         );
     }
 }
