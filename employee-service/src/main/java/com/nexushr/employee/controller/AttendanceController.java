@@ -6,6 +6,7 @@ import com.nexushr.employee.dto.AttendanceResponse;
 import com.nexushr.employee.service.AttendanceService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,17 +29,20 @@ public class AttendanceController {
 
     @PostMapping("/check-in")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAnyRole('ADMIN', 'HR_MANAGER', 'EMPLOYEE')")
     public AttendanceResponse checkIn(@Valid @RequestBody AttendanceCheckInRequest request) {
         return attendanceService.checkIn(request);
     }
 
     @PostMapping("/{attendanceId}/check-out")
+    @PreAuthorize("hasAnyRole('ADMIN', 'HR_MANAGER', 'EMPLOYEE')")
     public AttendanceResponse checkOut(@PathVariable Long attendanceId,
                                        @Valid @RequestBody AttendanceCheckOutRequest request) {
         return attendanceService.checkOut(attendanceId, request);
     }
 
     @GetMapping("/employee/{employeeId}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'HR_MANAGER', 'EMPLOYEE')")
     public List<AttendanceResponse> getAttendanceHistory(@PathVariable Long employeeId) {
         return attendanceService.getAttendanceByEmployee(employeeId);
     }

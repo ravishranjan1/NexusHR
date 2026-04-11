@@ -139,4 +139,29 @@ Leave management endpoints added:
 
 Day 6 prepares the project for Day 7 backend checkpoint and testing.
 
+## Day 7 Setup
+
+Day 7 focused on the Week 1 backend checkpoint and service-to-service authentication usage.
+
+Implemented in `employee-service`:
+
+- Spring Security integration for protected APIs
+- JWT validation using the same shared secret as `auth-service`
+- JWT authentication filter for bearer token processing
+- Method-level authorization using `@PreAuthorize`
+- Role-based protection for employee, attendance, and leave endpoints
+
+Checkpoint testing support added:
+
+- Week 1 Postman collection for auth, employee, attendance, and leave workflows
+- Cross-service token usage where `auth-service` issues JWTs and `employee-service` validates them
+
+Examples of protected manager/admin endpoints:
+
+- `GET /api/leaves/pending`
+- `POST /api/leaves/{leaveRequestId}/approve`
+- `POST /api/leaves/{leaveRequestId}/reject`
+
+Day 7 completes the Week 1 checkpoint: backend API running, authentication working, and core employee plus attendance and leave modules testable.
+
 Git was intentionally not used as requested.
