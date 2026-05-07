@@ -164,4 +164,27 @@ Examples of protected manager/admin endpoints:
 
 Day 7 completes the Week 1 checkpoint: backend API running, authentication working, and core employee plus attendance and leave modules testable.
 
+## Day 8 Setup
+
+Day 8 focused on bootstrapping the frontend application foundation.
+
+Implemented in `frontend`:
+
+- React 19 application scaffold with TypeScript and Vite
+- Tailwind CSS v4 setup for styling
+- TanStack Query provider for frontend data fetching
+- shadcn-style base UI components such as `Button` and `Card`
+- Vite alias configuration for clean `@/` imports
+- Starter NexusHR app shell ready for auth pages and dashboards
+
+Frontend foundation includes:
+
+- `frontend/package.json`
+- `frontend/src/App.tsx`
+- `frontend/src/styles.css`
+- `frontend/src/providers/query-provider.tsx`
+- `frontend/src/components/ui/*`
+
+Day 8 prepares the project for Day 9 authentication pages and protected frontend routes.
+
 Git was intentionally not used as requested.
