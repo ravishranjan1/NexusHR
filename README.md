@@ -187,4 +187,32 @@ Frontend foundation includes:
 
 Day 8 prepares the project for Day 9 authentication pages and protected frontend routes.
 
+## Day 9 Setup
+
+Day 9 focused on frontend authentication pages and protected routing.
+
+Implemented in `frontend`:
+
+- React Router based page routing
+- Login page connected to `auth-service`
+- Signup page connected to `auth-service`
+- Auth provider for token persistence using browser local storage
+- Protected route wrapper for secured frontend pages
+- Authenticated landing page for successful login state
+- Frontend API helpers for login and signup requests
+
+Frontend auth flow includes:
+
+- `/login`
+- `/signup`
+- `/app`
+
+Protected frontend behavior:
+
+- Unauthenticated users are redirected to `/login`
+- Successful login or signup stores auth tokens locally
+- Authenticated users can access the protected `/app` route
+
+Day 9 prepares the project for Day 10 frontend payroll and business workflow screens.
+
 Git was intentionally not used as requested.

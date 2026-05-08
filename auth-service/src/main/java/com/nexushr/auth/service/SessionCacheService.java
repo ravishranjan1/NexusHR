@@ -1,6 +1,8 @@
 package com.nexushr.auth.service;
 
 import com.nexushr.auth.session.SessionCacheEntry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import java.util.List;
 public class SessionCacheService {
 
     private static final String SESSION_KEY_PREFIX = "auth:sessions:";
+    private static final Logger log = LoggerFactory.getLogger(SessionCacheService.class);
 
     private final RedisTemplate<String, SessionCacheEntry> sessionRedisTemplate;
     private final long refreshTokenExpiration;
@@ -35,15 +38,23 @@ public class SessionCacheService {
                 expiresAt
         );
 
-        sessionRedisTemplate.opsForValue().set(
-                key(refreshToken),
-                entry,
-                Duration.ofMillis(refreshTokenExpiration)
-        );
+        try {
+            sessionRedisTemplate.opsForValue().set(
+                    key(refreshToken),
+                    entry,
+                    Duration.ofMillis(refreshTokenExpiration)
+            );
+        } catch (RuntimeException ex) {
+            log.warn("Redis unavailable, skipping session cache for {}", email, ex);
+        }
     }
 
     public void evictSession(String refreshToken) {
-        sessionRedisTemplate.delete(key(refreshToken));
+        try {
+            sessionRedisTemplate.delete(key(refreshToken));
+        } catch (RuntimeException ex) {
+            log.warn("Redis unavailable, skipping session cache eviction for token {}", refreshToken, ex);
+        }
     }
 
     private String key(String refreshToken) {
