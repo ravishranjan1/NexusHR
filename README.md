@@ -215,4 +215,59 @@ Protected frontend behavior:
 
 Day 9 prepares the project for Day 10 frontend payroll and business workflow screens.
 
+## Day 10 Setup
+
+Day 10 focused on payroll calculation logic and payslip generation.
+
+Implemented in `payroll-service`:
+
+- PostgreSQL datasource configuration using `application.properties`
+- Flyway migration for the `payroll_records` table
+- `PayrollRecord` entity and `PayrollStatus` enum
+- Payroll repository for storing and retrieving payslips
+- Payroll service for salary calculation and payslip generation
+- REST APIs for generating a payslip and viewing payslip history
+
+Payroll calculation includes:
+
+- `grossSalary = basicSalary + hra + allowances + bonus`
+- `totalDeductions = taxDeduction + providentFundDeduction + otherDeductions`
+- `netSalary = grossSalary - totalDeductions`
+
+Payroll endpoints added:
+
+- `POST /api/payroll/payslips/generate`
+- `GET /api/payroll/payslips/{id}`
+- `GET /api/payroll/payslips/employee/{employeeId}`
+
+Day 10 prepares the project for Day 11 performance review and rating workflows.
+
+## Day 11 Setup
+
+Day 11 focused on the performance review module with rating system.
+
+Implemented in `employee-service`:
+
+- Flyway migration for the `performance_reviews` table
+- `PerformanceReview` entity and `PerformanceReviewStatus` enum
+- Repository support for employee and reviewer review history
+- Performance review service for review creation and overall score calculation
+- REST APIs for creating reviews and viewing them by employee or reviewer
+
+Performance rating system includes:
+
+- `goalAchievementRating` from 1 to 5
+- `teamworkRating` from 1 to 5
+- `punctualityRating` from 1 to 5
+- `overallRating` calculated as the average of the three category ratings
+
+Performance review endpoints added:
+
+- `POST /api/performance-reviews`
+- `GET /api/performance-reviews/{id}`
+- `GET /api/performance-reviews/employee/{employeeId}`
+- `GET /api/performance-reviews/reviewer/{reviewerId}`
+
+Day 11 prepares the project for Day 12 employee dashboard UI with key metrics.
+
 Git was intentionally not used as requested.
