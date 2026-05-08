@@ -1,1 +1,19 @@
 /.idea/
+# dependencies
+node_modules/
+
+# build files
+dist/
+
+# logs
+*.log
+
+# environment files
+.env
+
+# IDE files
+.idea/
+.vscode/
+
+# TypeScript cache
+*.tsbuildinfo
