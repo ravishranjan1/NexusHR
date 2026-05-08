@@ -1,0 +1,22 @@
+CREATE TABLE payroll_records (
+    id BIGSERIAL PRIMARY KEY,
+    employee_id BIGINT NOT NULL,
+    employee_code VARCHAR(50) NOT NULL,
+    employee_name VARCHAR(150) NOT NULL,
+    pay_period_start DATE NOT NULL,
+    pay_period_end DATE NOT NULL,
+    basic_salary NUMERIC(12, 2) NOT NULL,
+    hra NUMERIC(12, 2) NOT NULL,
+    allowances NUMERIC(12, 2) NOT NULL,
+    bonus NUMERIC(12, 2) NOT NULL,
+    tax_deduction NUMERIC(12, 2) NOT NULL,
+    provident_fund_deduction NUMERIC(12, 2) NOT NULL,
+    other_deductions NUMERIC(12, 2) NOT NULL,
+    gross_salary NUMERIC(12, 2) NOT NULL,
+    total_deductions NUMERIC(12, 2) NOT NULL,
+    net_salary NUMERIC(12, 2) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    generated_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    CONSTRAINT uk_payroll_employee_period UNIQUE (employee_id, pay_period_start, pay_period_end)
+);
