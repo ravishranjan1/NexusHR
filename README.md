@@ -270,4 +270,50 @@ Performance review endpoints added:
 
 Day 11 prepares the project for Day 12 employee dashboard UI with key metrics.
 
+## Day 12 Setup
+
+Day 12 focused on the employee dashboard UI with key metrics.
+
+Implemented in `frontend`:
+
+- Replaced the temporary protected-route placeholder with a real employee dashboard page
+- Added a starter employee dashboard data hook for frontend metric cards and activity sections
+- Built key metric cards for attendance, leave balance, latest payslip, and performance score
+- Added overview panels for attendance, leave, payroll, and performance status
+- Added recent activity and upcoming employee actions sections
+- Reused platform status information to show overall application readiness on the dashboard
+
+Employee dashboard highlights include:
+
+- Signed-in user summary
+- Attendance streak and presence summary
+- Leave balance and pending request visibility
+- Latest payslip and performance review snapshot
+- Beginner-friendly action prompts for the next workflow steps
+
+Day 12 prepares the project for Day 13 manager dashboard with team overview.
+
+## Day 13 Setup
+
+Day 13 focused on the manager dashboard with team overview.
+
+Implemented in `frontend`:
+
+- Added a dedicated manager dashboard route at `/app/manager`
+- Added role-based frontend route protection for `ADMIN` and `HR_MANAGER`
+- Added role-aware post-login redirect so managers land on their dashboard automatically
+- Built a starter manager dashboard data hook for team metrics, approval queue, and insights
+- Added team overview cards for attendance, leave, and performance visibility
+- Added approval queue and manager insight sections for a clear team operations view
+
+Manager dashboard highlights include:
+
+- Team size and daily presence metrics
+- Pending approval visibility
+- Average performance score summary
+- Team member snapshot with attendance, leave, and review signals
+- Dedicated manager workflow prompts for approvals and follow-up actions
+
+Day 13 prepares the project for Day 14 Week 2 checkpoint and UI workflow testing.
+
 Git was intentionally not used as requested.

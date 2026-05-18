@@ -67,7 +67,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           } satisfies SignupPayload);
 
       saveAuth(response satisfies AuthResponse);
-      navigate("/app", { replace: true });
+      navigate(getHomeRoute(response.roles), { replace: true });
     } catch (submissionError) {
       setError(submissionError instanceof Error ? submissionError.message : "Authentication failed.");
     } finally {
@@ -133,6 +133,10 @@ export function AuthForm({ mode }: AuthFormProps) {
       </CardContent>
     </Card>
   );
+}
+
+function getHomeRoute(roles: string[]) {
+  return roles.some((role) => role === "ADMIN" || role === "HR_MANAGER") ? "/app/manager" : "/app";
 }
 
 type FieldProps = {
